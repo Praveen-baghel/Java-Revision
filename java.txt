@@ -1,0 +1,324 @@
+JDK contains developer tools(compiling,debugging etc.) and JRE(provide runtime-environment only for execution purpose). JRE again contains JVM(convert byte-code to machine code) and libraries(packages).
+Variables:
+  1. Instance varialble
+  2.Class(Static) varialble
+  3.Local varialble
+  We can use _ and $ as special symbols in variable naming.
+
+
+Primitive Datatypes:
+  1.Integers-byte(8bits),short(16bits),int(32bits),long(64bits)
+  2.Floating-point numbers-float(32bits),double(64bits)
+  3.Characters-char(16bits)
+  4.Boolean-boolean(1bit)
+
+
+Bitwise operators:
+  ~ not
+  | or
+  & and
+  ^ xor
+  >> right shift
+  << left shift
+  >>> right shift zero fill
+
+
+instanceof() used to check whether an object is an instance of a class or a class implementing a particular interface.
+null is not instance of anything.
+class InstanceofDemo {
+    public static void main(String[] args) {
+
+        Parent obj1 = new Parent();
+        Parent obj2 = new Child();
+
+        System.out.println("obj1 instanceof Parent: " +
+            (obj1 instanceof Parent));
+        System.out.println("obj1 instanceof Child: " +
+            (obj1 instanceof Child));
+        System.out.println("obj1 instanceof MyInterface: " +
+            (obj1 instanceof MyInterface));
+        System.out.println("obj2 instanceof Parent: " +
+            (obj2 instanceof Parent));
+        System.out.println("obj2 instanceof Child: " +
+            (obj2 instanceof Child));
+        System.out.println("obj2 instanceof MyInterface: " +
+            (obj2 instanceof MyInterface));
+    }
+}
+class Parent {}
+class Child extends Parent implements MyInterface {}
+interface MyInterface {}
+Output:
+obj1 instanceof Parent: true
+obj1 instanceof Child: false
+obj1 instanceof MyInterface: false
+obj2 instanceof Parent: true
+obj2 instanceof Child: true
+obj2 instanceof MyInterface: true
+
+
+for-each loop is essentially read-only.
+for(type itr-var : collection) statement-block
+
+
+forEach():
+    iterable.forEach(item -> action)
+        List<String> gamesList = new ArrayList<String>();
+        gamesList.add("Football");
+        gamesList.add("Cricket");
+        gamesList.add("Chess");
+        gamesList.add("Hocky");
+        gamesList.forEach(games -> System.out.println(games));  //Print all elements of gamesList
+
+
+Arrays:
+type[] name=new type[size];
+type name[]=new type[size];
+int[] a={1,2,3}
+type[][] name=new type[row][column];
+type name[][]=new type[row][column];
+int[][] b={{1,2,3},{1,2,3}};
+
+
+Methods of copying arrays:
+    1.System.arraycopy()
+        System.arraycopy(src,srcPos,dest,destPos,length);
+        src=source array
+        srcPos=starting position in source array to start copying from
+        dest=destination array
+        destPos=starting position in destination array from copying
+        length=number of elements to be copied
+    2.Arrays.copyOf()
+        destination_array=Arrays.copyOf(source_array,no_of_elements_to_be_copied);
+    3.Object.clone()
+        destination_array=source_array.clone();
+
+
+final keyword:
+    1.final variable can be assigned vlaue once.
+    2.final method can't be overriden by child class.
+    3.final class prevent other class to extend it.
+    4.final object prevent reference changing of that object.
+        final String a= new String("John");
+        a=new String("Lee");    // not allowed
+
+Convert array into ArrayList:
+    1.Arrays.asList()
+        String anArrayOfStrings[] = { "Agra", "Mysore", "Chandigarh", "Bhopal" };
+        List<String> strList = Arrays.asList(anArrayOfStrings);
+    2.Collection.addAll()-addAll() method adds all of the specified elements to the specified collection. Elements to be added may be specified individually or as an array.
+        final String array[] = { "abc", "xyz", "pqr", "XYZ" };
+        final ArrayList<String> arraylist = new ArrayList<String>();
+        Collections.addAll(arraylist, array);
+    3.Conversion manually:
+        final String array[] = { "abc", "xyz", "pqr", "XYZ" };
+        final ArrayList<String> arraylist=new ArrayList<>();
+        for(int i=0;i<array.length;i++)
+            arraylist.add(array[i]);
+        arraylist.forEach(e -> System.out.println(e));
+
+
+toString() method:
+    This method is contained in Object class thus available for all classes. Default behavior of toString() is to print class name, then @, then unsigned hexadecimal representation of the hash code of the object.
+        public String toString()
+        {
+            return getClass().getName() +"@"+Integer.toHexString(hashCode());
+        }
+    If we want proper information about object then we have to override toString() method.
+        public String toString()
+        {
+            return name + " " + age + " " + college + " "
+            + course + " " + address;
+        }
+     In all wrapper classes, all collection classes, String class, StringBuffer, StringBuilder classes, toString() method is overridden for meaningful String representation.So no need to override in this case until necessary.
+
+
+Object class methods:
+    protected Object clone()
+    boolean equals(Object obj)
+    protected void finalize()
+    Class<?> getClass()
+    int hashCode()
+    void notify()
+    void notifyAll()
+    void wait()
+    String toString()
+    The notify, notifyAll, and wait methods of Object all play a part in synchronizing the activities of independently running threads in a program. There are five of these methods:
+        public final void notify()
+        public final void notifyAll()
+        public final void wait()
+        public final void wait(long timeout)
+        public final void wait(long timeout, int nanos)
+    For more information:https://www.javaguides.net/2018/09/object-class-methods-in-java-with-examples.html
+
+
+hashCode() method:
+    Hashing is the process of mapping the data to some representative integer value using the concept of hashing algorithms.
+    hashCode() in Java is a function that returns the hashcode value of an object on calling. It returns an integer or a 4 bytes value which is generated by the hashing algorithm.
+    The process of assigning a unique value to an object or attribute using an algorithm, which enables quicker access, is known as hashing.
+    Types of hashCode() methods:
+        1.public int hashCode()-This belongs to Java Integer class and returns the hashcode of the current object, which is equal to the primitive int value.
+        2.public static int hashCode(int value)-returns the hashcode for the integer“value” passed through the function.
+
+
+
+
+Convert ArrayList to array:
+    1.toArray()
+        List<String> strList = new ArrayList<>();
+        strList.add("abc");
+        strList.add("xyz");
+        strList.add("pqr");
+        strList.add("mno");
+        String[] strArr = new String([strList.size()]);
+        strArr=strList.toArray();
+        System.out.println(Arrays.toString(strArr));
+    2.Manual Conversion
+        List<String> strList = new ArrayList<>();
+        strList.add("abc");
+        strList.add("xyz");
+        strList.add("pqr");
+        strList.add("mno");
+        String[] strArr = new String([strList.size()]);
+        for (int i = 0; i < strList.size(); i++)
+        {
+            strArr[i] = strList.get(i);
+        }
+        System.out.println(Arrays.toString(strArr));
+
+
+java.util.Arrays class APIs or Methods:
+    1.Convert Array to List
+    2.Searching an Array
+    3.Sorting an Array
+    4.Copies an Array
+    5.Check two Arrays are Deeply equal
+    6.Filling values in an Array
+    7.String representation of Array
+    8.Sorting Strings
+    9.Sorting Dates
+    For details:https://www.javaguides.net/2018/08/java-util-arrays-class-api-guide.html
+
+
+Lambda Expressions:
+    A lambda expression is a short block of code which takes in parameters and returns a value.
+        numbers.forEach( (n) -> { System.out.println(n); } );
+    Lambda expressions can be stored in variables if the variable's type is an interface which hs only one method with same number of parameters and return type as that of lambda expression.
+        interface MyInterface{
+            public void display();
+        }
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(8);
+        numbers.add(2);
+        numbers.add(1);
+        MyInterface ref = n -> System.out.println(n);
+        numbers.forEach(ref);
+
+
+
+Anonymous class:
+    In Java, a class can contain another class known as nested class. It's possible to create a nested class without giving any name.A nested class that doesn't have any name is known as an anonymous class.Anonymous class is useful when we have to create an instance of the object with overloading methods of a class or interface without creating a subclass of class.
+        class OuterClass{
+            Type object1 = new Type(parameterList){
+                //body of anonymous class
+            };
+        }
+        Here, Type can be :
+            1.A superclass that an anonymous class extends
+            2.An interface that an anonymous class implements
+        In case if this superclass or interface has only one method then we can use lambda expression to make anonymous class.
+            interface A{
+                public void greet();
+            }
+            class B{
+                A obj=() -> System.out.println("Hello World!");
+                obj.greet();
+            }
+
+
+OOPs:-
+    Ways to create new objects in Java:
+        1.Using the new keyword
+        2.Using newInstance() method of Class class:
+            public class Student{
+                ...
+            }
+            public static void main(String[] args){
+                String className="Student";  //name of class whose object to be made
+                Class clazz=Class.forName(className);  //load the class into Class object
+                Student student1=(Student) clazz.newInstance();  //create object of Student class
+            }
+        3.Using newInstance() method of Constructor class:
+            import java.lang.reflect.Constructor;
+            import java.lang.reflect.InvocationTargetException;
+            public class Student{
+                ...
+            }
+            Constructor < Student > constructor;
+            try {
+                constructor = Student.class.getConstructor();
+                Student student = constructor.newInstance();
+                System.out.println(student.getName());
+                System.out.println(student.getCollege());
+            }
+            catch (InstantiationException | IllegalAccessException |    IllegalArgumentException | InvocationTargetException |
+            NoSuchMethodException | SecurityException e)
+            {
+                e.printStackTrace();
+            }
+        4.Using Object Deserialization:
+            In this approach, we will be using Serializable interface in Java which is a marker interface(interface with no fields or methods within it) for serializing a Java Student Object s1 into a text file (sample.txt) and using object deserialization we will be reading and assigning it to a new Student object s2.
+                import java.io.Serializable;
+                import java.io.FileInputStream;
+                import java.io.FileOutputStream;
+                import java.io.ObjectInputStream;
+                import java.io.ObjectOutputStream;
+                public class Student{
+                    ...
+                }
+                main{
+                    String filePath = "sample.txt";
+                    Student s1 = new Student("Ramesh", "ABC");
+                    try {
+                        FileOutputStream fileOutputStream = new     FileOutputStream(filePath);
+                        ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+                        outputStream.writeObject(s1);
+                        outputStream.flush();
+                        outputStream.close();
+
+                        FileInputStream fileInputStream = new FileInputStream(filePath);
+                        ObjectInputStream inputStream = new     ObjectInputStream(fileInputStream);
+                        Student s2 = (Student) inputStream.readObject();
+
+                        inputStream.close();
+
+                        System.out.println(s2.getName());
+                        System.out.println(s2.getCollege());
+                    }
+                    catch (Exception ee) {
+                        ee.printStackTrace();
+                    }
+                }
+
+        5.Using Object Cloning- clone() method:
+            The clone() method is used to create a copy of an existing object, in order to the clone() method the corresponding class should have implemented a Cloneable interface which is again a Marker Interface.
+                import java.io.Serializable;
+                public class Student{
+                    ...
+                }
+                main{
+                    Student student1 = new Student("Ramesh", "ABC");
+                    try {
+                        Student student2 = (Student)    student1.clone();
+                        System.out.println(student2.getName());
+                        System.out.println(student2.getCollege());
+                    }
+                    catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+
+
