@@ -1,0 +1,28 @@
+git init
+git status
+git add .
+git restore -staged .
+git commit -m "[message]"
+git stash
+git stash pop 
+git log 
+git reset [commit_hashid]
+git stash clear
+git remote add origin [url]
+git remote -v
+git push origin [branch]
+git push origin [branch_name] -f
+git branch [branch_name]
+git checkout [branch_name]
+git merge [branch_name]
+git clone [url]
+git remote add upstream [url]
+
+git fetch --all --prune
+git reset --hard upstream/main
+
+git pull upstream main
+
+git rebase -i [commit_hashid]
+
+git reset --hard [commit_hashid]
