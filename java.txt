@@ -318,6 +318,7 @@ OOPs:-
                         e.printStackTrace();
                     }
                 }
+
     
     Interfaces in Java:
         Interfaces are just contracts or signatures and they don't know anything about implementation.
@@ -374,7 +375,17 @@ OOPs:-
             }
         
         Static method:Interfaces can also contains static methods.
-        
+
+
+    Abstract classes in Java: It may or may not include abstract methods.They can't be instantiated but can be subclassed.
+    A method defined abstract must always be redefined in the subclass, thus making overriding compulsory OR either make subclass itself abstract.
+    Any class that contains one or more abstract methods must also be declared with abstract keyword.
+    There can be no object of an abstract class. That is, an abstract class can not be directly instantiated with the new operator.
+    An abstract class can have parameterized constructors and default constructor is always present in an abstract class. Constructors are called by super keyword by clild class.
+    An abstract class can implement interface without implementing all of interface's methods.
+
+
+    
 
     
 
