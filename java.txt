@@ -318,6 +318,65 @@ OOPs:-
                         e.printStackTrace();
                     }
                 }
+    
+    Interfaces in Java:
+        Interfaces are just contracts or signatures and they don't know anything about implementation.
+        We can’t create an instance(interface can’t be instantiated) of an interface but we can make reference to it that refers to the Object of its implementing class.
+        A class can implement more than one interface.
+        An interface can extends another interface or interfaces (more than one interface) .
+        A class that implements interface must implements all the methods in interface.
+        All the methods are public and abstract. And all the fields are public, static, and final.
+        It is used to achieve multiple inheritance.
+        
+        Default methods:Only declared within the interface and must be marked by default keyword.It must have a method body.
+            public interface interface1{
+                default String turnAlarm(){
+                    return "Alarm off";
+                }
+                String getBrand();
+            }
+
+        Multiple interface inheritance:If multiple interfaces implemented have same default methods then to solve this ambiguity, we can use two ways:
+        1. Override the default methods in concrete class
+            public interface interface1{
+                default String method1{
+                    return "interface1";
+                }
+            }
+            public interface interface2{
+                default String method1{
+                    return "interface2";
+                }
+            }
+            public class test implements interface1,interface2{
+                @Override
+                public String method1{
+                    return "class test";
+                }
+            }
+        2. Use the default methods of those interfaces as it is.
+            public interface interface1{
+                default String method1{
+                    return "interface1";
+                }
+            }
+            public interface interface2{
+                default String method1{
+                    return "interface2";
+                }
+            }
+            public class test implements interface1,interface2{
+                @Override
+                public String method1{
+                    interface1.super.method1;    // calls inteface1 method1
+                    // inteface2.super.method2;  //calls interface2 method1
+                }
+            }
+        
+        Static method:Interfaces can also contains static methods.
+        
+
+    
 
 
 
