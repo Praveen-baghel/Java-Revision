@@ -385,6 +385,38 @@ OOPs:-
     An abstract class can implement interface without implementing all of interface's methods.
 
 
+    Abstraction in Java: 
+        Abstraction is archieved via abstract classes and interfaces.It is the process of gaining information.The complexity of implementation is hidden using interface and abstract class.
+        It focus on 'what' should be done.It is the method of hiding the unwanted information.It focus on implementation hiding.
+        public abstract class Employee{
+         private int hours;
+            public int claculateSalary();
+            public Employee(int data){
+                this.hours=data;
+            }
+            public int getHours(){
+             return this.hours;
+            }
+        }
+        public class Contractor extends Employee{
+            public Contractor(int data){
+                super(data);
+            }
+            public int claculateSalary(){
+                return getHours * 50;
+            }
+        }
+    
+
+    Encapsulation in Java:
+        It refers to combining data and associated  methods as a single unit. It is implemented via access modifiers like public, private and protected.The data is hidden using methods like getters and setters.It focus on 'how' it should be done.It is also called data-hiding.It focus on information hiding.
+
+    Abstraction hides irrelevant data using interface and abstract class while Encapsulation hides all the data and methods implementing the data using access modifiers.
+    
+
+
+
+
     
 
     
