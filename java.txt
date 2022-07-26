@@ -414,8 +414,48 @@ OOPs:-
     Abstraction hides irrelevant data using interface and abstract class while Encapsulation hides all the data and methods implementing the data using access modifiers.
     
 
+    Inheritance in Java:
+        Types of inheritance:
+            1. Single inheritance: B extends A.
+            2. Milti-level inheritance:  C extends B , B extends A.
+            3. Hierarchical inheritance: B extends A , C extends A.
+            4. Multiple inheritance(via interfaces): Java doesn't support multiple inheritance via classes but with interfaces it does.
+            5. Hybrid inheritance(via Interfaces): D extends B and C , B and C extends A.
 
 
+    Polymorphism in Java:
+        The process of representing one form in multiple forms.
+        Types:
+            1. Compile time Polymorphism: Using method overloading.
+            2. Runtime Polymorphism: Using method overriding.
+                class Parent{
+                    public void display(){
+                        System.out.println("Parent class");
+                    }
+                }
+                class A extends Parent{
+                    @Override
+                    public void display(){
+                        System.out.println("Class A");
+                    }
+                }
+                class B extends Parent{
+                    @Override
+                    public void display(){
+                        System.out.println("Class B");
+                    }
+                }
+                main(){
+                    Parent p=new Parent();
+                    p.display();        //Parent class
+                    p=new A();
+                    p.display();        //Class A
+                    p=new B();
+                    p.display;          //Class B
+                }
+                
+
+    
 
     
 
