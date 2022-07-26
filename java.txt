@@ -415,6 +415,7 @@ OOPs:-
     
 
     Inheritance in Java:
+        It is a IS-A relationship signifying that one object is a type of another.
         Types of inheritance:
             1. Single inheritance: B extends A.
             2. Milti-level inheritance:  C extends B , B extends A.
@@ -555,7 +556,12 @@ OOPs:-
                 this.lineItems.add(new LineItem(id, quantity, p));
             }
             public void removeItemById(int itemid){
-                ...
+                Iterator<LineItem> itr = this.iterator();
+                while(itr.hasNext()){
+                    LineItem l=itr.next();
+                    if(l.id==id)
+                        itr.remove();
+                }
             }
         }
         public class CompositionDemo {
@@ -576,6 +582,110 @@ OOPs:-
                 o = null;  
             }
         }
+
+
+    Aggregation in Java:
+        Aggregation is an association that represents a part of a whole relationship where a part can exists without a whole. It has a weaker relationship.e.g. relationship between the Department and the Teacher.A Teacher may belong to multiple departments. If the Department is deleted , the Teacher object will not destroy.
+        Example: Let's take the example of LineItem and its Products. If line-item HAS-A product, then a line item is a whole and product is a part. If a line-item is deleted, then the corresponding product needs not to be deleted.
+        class Product{
+            private int id;
+            private String name;
+            private String description;
+            public Product(int id, String name, String description){
+                super();
+                this.id=id;
+                this.name=name;
+                this.description=description;
+            }
+            public int getId(){
+                return id;
+            }
+            public void setId(int id){
+                this.id=id;
+            }
+            public String getName(){
+                return name;
+            }
+            public void setName(String name){
+                this.name-name;
+            }
+            public String getDescription(){
+                return description;
+            }
+            public void setDescription(String description){
+                this.description=description;
+            }
+            @Override
+            public String toString(){
+                return "Product [id=" + id + ", name=" + name + ", description=" + description + "]";
+            }
+        }
+        class LineItem {
+            private int id;
+            private int quantity;
+            private Product p;
+
+            public LineItem(int id, int quantity, Product p) {
+            super();
+            this.id = id;
+            this.quantity = quantity;
+            this.p = p;
+            }
+            public int getId() {
+                return id;
+            }
+            public void setId(int id) {
+                this.id = id;
+            }
+            public int getQuantity() {
+                return quantity;
+            }
+            public void setQuantity(int quantity) {
+                this.quantity = quantity;
+            }
+            public Product getP() {
+                return p;
+            }
+            public void setP(Product p) {
+                this.p = p;
+            }
+            @Override
+            public String toString() {
+                return "LineItem [id=" + id + ", quantity=" + quantity + ", p=" + p + "]";
+            }
+        }
+        public class Aggregation{
+            public static void main(String[] args){
+                Product p1=new Product(1,"Pen","This is red pen");
+                Product p2=new Product(2,"Pencil","This is pencil");
+                Product p3=new Product(3,"ColorBox","This is color box");
+                LineItem item1 = new LineItem(1, 2, p1);
+                LineItem item2 = new LineItem(1, 2, p2);
+                LineItem item3 = new LineItem(1, 2, p3);
+                // Before deleting line-item 1
+                System.out.println(item1.getId());
+                System.out.println(item1.getQuantity());
+                System.out.println(item1.getP())
+                item1=null;
+                // Still product exists
+                System.out.println(p1);
+            }
+        }
+
+
+    Difference between Aggregation and Composition:
+        Aggregation: 
+            It is weak association.
+            A uses B.
+            HAS-A relationship. A has B.
+            Denoted by empty diamond in UML.
+            We don't use final keyword for Aggregation.
+        Composition:
+            It is strong association.
+            A owns B.
+            PART-OF relationship. B is part of A.
+            Denoted by filled diamond in UML.
+            final keyword is used to represent Composition because the owner object expects a part object to be available and function by making it 'final'.
 
 
     
