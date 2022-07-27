@@ -688,6 +688,27 @@ OOPs:-
             final keyword is used to represent Composition because the owner object expects a part object to be available and function by making it 'final'.
 
 
+    Association in Java:
+        It represents a relationship between two or more objects where all objects have their own life cycle and there is no owner. The name of an association specifies the nature of the relationship between objects.
+        Association is a relation between two separate classes which establishes through their Objects. Association can be one-to-one, one-to-many, many-to-one, many-to-many.
+        There are two types of Association:
+            1. Composition
+            2. Aggregation
+         Example: Relationship between Student and Teacher
+         public class Teacher{
+            private String name;
+            private List<Student> students;
+            // getter and setters method
+         }
+         public class Student{
+            private String name;
+            private List<Teacher> teachers;
+            // getter and setter methods
+         }
+
+
+    
+
     
 
 
