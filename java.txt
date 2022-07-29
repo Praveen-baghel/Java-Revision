@@ -707,8 +707,15 @@ OOPs:-
          }
 
 
-    
-
+    Cohesion:
+        The term cohesion is used to indicate the degree to which a class has a single, well-focused responsibility.
+        Cohesion is a measure of how the methods of a class or a module are meaningfully and strongly related and how focused they are in providing a well-defined purpose to the system.        
+        Types of Cohesion:
+            1. Low Cohesive: A class is identified as a low cohesive class when it contains many unrelated functions within it. And that is what we need to avoid because big classes with unrelated functions hamper their maintaining. Always make your class small and with a precise purpose and highly related functions.
+            Example: Let's take an examole of a class whose purpose is to do a task A but it also contains methods unrelated to task A.
+            2. High cohesive: The code has to be very specific in its operations.
+            The methods are highly related to the class/module.
+            Example: Let's take an example of a class that doesn't contains any unrelated things/methods.
     
 
 
