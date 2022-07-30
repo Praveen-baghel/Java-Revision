@@ -716,8 +716,64 @@ OOPs:-
             2. High cohesive: The code has to be very specific in its operations.
             The methods are highly related to the class/module.
             Example: Let's take an example of a class that doesn't contains any unrelated things/methods.
-    
 
+
+    Coupling:
+        Coupling refers to the degree to which one class knows about another class. If one class uses another class, that is coupling. Low dependencies between “artifacts” (classes, modules, components). There shouldn’t be too much dependency between the modules, even if there is a dependency it should be via the interfaces and should be minimal.
+        Types:
+        1. Tight coupling: If one class is tightly coupled with another class then it is tight-coupling.
+        Example: Let's take an example in which a class Traveler creates object of Car class. If we want to create a Bike class object in place of Car object then we have to make changes in Traveler class.
+            class Car{
+                public void move(){
+                    ...
+                }
+            }
+            public class Traveler{
+                main(){
+                    Car car=new Car();
+                    car.move();
+                }
+            }
+        2. Loose Coupling: Low dependencies between artifacts(classes, modules, components).Dependencies should be avoided using interfaces.
+        Inversion Of Control (IoC) / Dependency Injection (DI) - With DI objects are given their dependencies at creation time by some third party (i.e. Java EE CDI, Spring DI…) that coordinates each object in the system. Objects aren’t expected to create or obtain their dependencies—dependencies are injected into the objects that need them. The key benefit of DI—loose coupling.
+            Example: 
+                interface vehicle{
+                    public void move();
+                }
+                class Car{
+                    @Override
+                    public void move(){
+                        System.out.println("Car is moving");
+                    }
+                }
+                class Bike{
+                    @Override
+                    public void move(){
+                        System.out.println("Bike is moving.");
+                    }
+                }
+                public class Traveler{
+                    private vehicle v;
+                    public vehicle getV(){
+                        return v;
+                    }
+                    public void setV(vehicle v){
+                        this.v=v;
+                    }
+                    public void startJourney(){
+                        v.move();
+                    }
+                    main(){
+                        Traveler traveler = new Traveler();
+                        traveler.setV(new Car);  // Inject Car dependency
+                        traveler.startJourney();
+                        traveler.setV(new Bike());   //Inject Bike dependency
+                        traveler.startJourney();
+                    }
+                }
+
+    
+    
 
 
     
