@@ -772,6 +772,51 @@ OOPs:-
                     }
                 }
 
+
+    Delegation:
+        Delegation means hand over the responsibility for a particular task to another class or method.
+        It is a technique where an object expresses certain behavior to the outside but in reality delegates responsibility for implementing that behaviour to an associated object.
+        When to use Delegation:
+            1. Reduce the coupling of methods to their class.
+            2. Components that behave identically, but realize that this situation can change in the future.
+            3. If you need to use functionality in another class but you do not want to change that functionality then use delegation instead of inheritance.
+        Example: Let's take example of ticket booking. 
+        TicketBokkingByAgent provides an implementation of TravelBooking. But it delegates actual ticket booking to other classes at runtime using Polymorphism.
+            interface TravelBooking{
+                public void bookTicket();
+            }
+            class TrainBooking implements TravelBooking{
+                @Override
+                public void bookTicket(){
+                    System.out.println("Train ticket booked.");
+                }
+            }
+            class AirBooking implements TravelBooking{
+                @Override
+                public void bookTicket(){
+                    System.out.println("Flight ticket booked.");
+                }
+            }
+            class TicketBookingByAgent implements TravelBooking{
+                TravelBooking t;
+                public TicketBookingByAgent(TravelBooking t){
+                    this.t=t;
+                }
+                // Here ticket booking responsibility is delegated to other class using Polymorphism
+                @Override
+                public void bookTicket(){
+                    t.bookTicket();
+                }
+            }
+            public class DelegationDemo{
+                main(){
+                    // Here TicketBookingByAgent clas is internally delegating train booking responsibility to other class.
+                    TicketBookingByAgent agent = new TicketBookingByAgent(new TrainBooking());
+                    agent.bookTicket();
+                    agent=new TicketBookingByAgent(new AirBooking());
+                    agent.bookTicket();
+                }
+            }
     
     
 
