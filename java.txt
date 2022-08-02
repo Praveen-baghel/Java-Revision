@@ -819,6 +819,49 @@ OOPs:-
             }
     
     
+    Guide to make Immutable Class in Java:
+        Immutable class/object: An Immutable class is simply a class whose instances cannot be modified. All of the information contained in each instance is provided when it is created and is fixed for the lifetime of the object.e.g. String is an immutable class and once instantiated its value never changes.
+
+        Usage of Immutable class: One major benifit of the immutable class that it is inherently thread-safe. With immutable classes, states are never modified every modification of a state results in a new instance, hence each thread would use a different instance.The best use of the immutable objects is as the keys of a map.
+
+        Rules to make a class immtable:
+            1. Declare a class as final.
+            2. Make all field private so that direct access is not allowed.
+            3. Don't provide methods for variables.
+            4. Make all mutable fields final so that it's value can be assigned only once.
+            5. Iniitialize all the fields via constructor performiong a deep copy.
+            6. Perform Cloning of objects in the getter methods to return a copy rather than returning the actual object.
+
+        Example: Let's take an example of Complex class.
+            public final class Complex{
+                private final double re;
+                private final double im;
+                public Complex(double re,double im){
+                    this.re=re;
+                    this.im=im;
+                }
+                public double realPart(){
+                    return re;
+                }
+                public double imaginaryPart(){
+                    return im;
+                }
+                public Complex add(Complex c){
+                    return new Complex(re+c.re,im+c.im);
+                }
+                @Override
+                public boolean equals(Object o) {
+                if (o == this)
+                    return true;
+                if (!(o instanceof Complex))
+                    return false;
+                Complex c = (Complex) o;
+                // See page 43 to find out why we use compare instead of ==
+                return Double.compare(re, c.re) == 0 &&
+                    Double.compare(im, c.im) == 0;
+                }
+            } 
+
 
 
     
