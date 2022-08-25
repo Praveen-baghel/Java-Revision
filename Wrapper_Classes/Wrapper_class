@@ -1,0 +1,64 @@
+Wrapper Classes:
+    These classes “wrap” the primitive data type value in an object. Hence the name “Wrapper Classes”. All wrapper classes are immutable classes.
+
+    When to use wrapper classes:
+        1. When using collection framework classes.
+        2. To use constants defined by the class, such as MIN_VALUE and MAX_VALUE, that provide the upper and lower bounds of the data type.
+        3. To convert a String representation of primitive value into a primitive type.
+
+    Wrapper class hierarchy: All wrapper classes are available in java.lang package.
+    Object class
+        Character class
+        Boolean class
+        Number class
+            Long class
+            Byte class
+            Float class
+            Short class
+            Integer class
+            Double class
+
+    Autoboxing:
+        Autoboxing is the automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an int to an Integer, a double to a Double, and so on.
+        Example:
+            byte a=10;
+            Byte A=b;
+            System.out.println(A);     //10
+
+    Boxing:
+        We can explicitly box the primitive types by creating their corresponding wrapper class.
+        Example:
+            byte b=10;
+            Byte B=new Byte(b);
+            System.out.println(B);  //10
+    
+    Auto-Unboxing:
+    Compiler implicitly converts wrapper object to corresponding primitive data if you assign wrapper object to a primitive type variable.
+    Example:
+        Byte B=new Byte((byte) 10);
+        byte b=B;
+        System.out.println(b);  //10
+    
+    Unboxing:
+    We can explicitly convert wrapper object to corresponding primitive data type using wrapper class object methods such as byteValue(), shortValue(), longValue() etc.
+    Example:
+        Byte B=new Byte((byte) 10);
+        byte b=B.byteValue();
+        System.out.println(b);  //10
+
+
+Integer Wrapper Class:
+    Constructors:
+        Interger a=new Integer(int value);
+        Integer b=new Integer(String s);
+    
+    Methods:
+        1. toString():
+        return String object representing given Integer value.(Integer object or integer value).
+            int b=55;
+            Byte B=b;
+            System.out.println(Integer.toString(B));    //55
+            System.out.println(Integer.toHexString(b));    //37
+            System.out.println(Integer.toOctalString(b));    //67
+            System.out.println(Integer.toBinaryString(b));    //110111
+
