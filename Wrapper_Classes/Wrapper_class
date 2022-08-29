@@ -54,11 +54,41 @@ Integer Wrapper Class:
     
     Methods:
         1. toString():
-        return String object representing given Integer value.(Integer object or integer value).
+            1.1 toString(int number):
+            return String object representing given Integer value.(Integer object or integer value).
             int b=55;
-            Byte B=b;
+            Integer B=b;
             System.out.println(Integer.toString(B));    //55
             System.out.println(Integer.toHexString(b));    //37
             System.out.println(Integer.toOctalString(b));    //67
             System.out.println(Integer.toBinaryString(b));    //110111
 
+            1.2 toString(int number,int base):
+            The method returns a string representation of the specified argument in the specified base.
+            int a=55;
+            System.out.println(Integer.toString(a,2));  //100000
+
+        2. valueOf():
+        retrun a Integer object representing the specified int value.
+            int b=55;
+            Integer z=Integer.valueOf(b);
+            System.out.println(z);  //55
+        3. parseInt():
+        static int parseInt(String s) - Parses the string argument as a signed decimal integer.
+            System.out.println(Integer.parseInt("22"));     //  parse 22 as decimal digit
+        static int parseInt(String s, int radix) - Parses the string argument as a signed integer in the radix specified by the second argument.
+            System.out.println(Integer.parseInt("22",16)); //here given string should be of given base(second argument)
+        4. rotateLeft() and rotateRight():
+            static int rotateLeft(int i, int distance) - Returns the value obtained by rotating the two's complement binary representation of the specified int value left by the specified number of bits.
+            static int rotateRight(int i, int distance) - Returns the value obtained by rotating the two's complement binary representation of the specified int value right by the specified number of bits.
+        5.decode(): decode the string into Integer.
+            System.out.println(Integer.decode("45"));   //45
+            System.out.println(Integer.decode("005"));  //5
+            System.out.println(Integer.decode("0x0f"));     //15
+        6. int,byte,short,long,double,float value():
+                Integer x=new Integer(55);
+                bytevalue(x); //55
+                shortvalue(x);  //55
+                floatvalue(x);  //55.0
+
+        
